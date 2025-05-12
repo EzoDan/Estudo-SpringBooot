@@ -1,0 +1,8 @@
+spring.application.name=projeto
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=enzodanner@gmail.com
+spring.mail.password=20.enzo.05
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true

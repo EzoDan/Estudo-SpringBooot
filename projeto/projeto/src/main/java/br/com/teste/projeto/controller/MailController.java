@@ -1,0 +1,29 @@
+package br.com.teste.projeto.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import br.com.teste.projeto.model.MailStructure;
+import br.com.teste.projeto.services.MailService;
+
+@Controller
+@RequestMapping("/tomaleEmailSender")
+public class MailController {
+	
+	@Autowired
+	private MailService ms;
+	 
+	
+	@PostMapping("/send")
+	public String sendMail(@RequestParam String titulo, @RequestParam String mensagem, @RequestParam String email) {
+		MailStructure mail= new MailStructure();
+		mail.setTitulo(titulo);
+		mail.setMensagem(mensagem);
+		ms.sendMail(email, mail);
+		return "redirect:/";
+	}
+	
+}

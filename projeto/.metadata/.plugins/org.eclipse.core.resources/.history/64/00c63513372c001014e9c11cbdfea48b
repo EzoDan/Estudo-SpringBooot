@@ -1,0 +1,33 @@
+package br.com.teste.projeto.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.teste.projeto.model.Employee;
+import br.com.teste.projeto.model.MailStructure;
+import br.com.teste.projeto.services.EmployeeServiceImpl;
+import br.com.teste.projeto.services.MailService;
+
+@RestController
+@RequestMapping("/mail")
+public class MailController {
+	
+	@Autowired
+	private MailService ms;
+	@Autowired
+    private EmployeeServiceImpl employeeServiceImpl;
+	
+	
+	@PostMapping("/mail/send/{id}")
+	public String sendMail(@PathVariable long id, @RequestBody MailStructure mailStructure) {
+		Employee emp = employeeServiceImpl.getById(id);
+		String mail = emp.getEmail();
+		ms.sendMail(mail, mailStructure);
+		return "redirect:/";
+	}
+	
+}

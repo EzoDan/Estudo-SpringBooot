@@ -1,0 +1,6 @@
+package br.com.teste.projeto.model;
+
+public class MailStructure {
+	private String destinatario;
+	private String mensagem;
+}

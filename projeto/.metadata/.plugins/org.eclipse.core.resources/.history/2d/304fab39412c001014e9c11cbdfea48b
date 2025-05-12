@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Mandar e-mail</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h1 style="margin-top: 15px">Mandador de email</h1>
+		<hr>
+
+		<form action="#" th:action="@{/tomaleEmailSender/send}" th:object="${employee}" method="POST">
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="* {id}" />  
+			<h5>E-mail</h5>
+			<input type="text" th:field="*{email}" class="form-control mb-4 col-4" readonly="readonly">
+			<h5>Título da mensagem</h5>
+			<input type="text" class="form-control mb-4 col-4"name="titulo" required="required">
+			<h5>Mensagem</h5>
+			<textarea class="form-control" rows="5" cols="10" name="mensagem" required="required"></textarea>
+			
+			<button type="submit" class="btn btn-info col-2" style="margin-top: 15px">Send e-mail</button>
+		</form>
+
+		<hr>
+
+		<a th:href="@{/}"> voltar p menu mano</a>
+	</div>
+</body>
+</html>
